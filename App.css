@@ -1,0 +1,302 @@
+/* ===========================================================
+   Vintage Maharani Portfolio — Elina Arora
+   Retro Indian collage aesthetic
+   =========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Yatra+One&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700;1,900&family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --cream: #f3e7cc;
+  --paper: #ede0c0;
+  --paper-dark: #e2d2a9;
+  --ink: #2a1d12;
+  --ink-soft: #4a3826;
+  --terracotta: #b53a26;
+  --terracotta-dark: #8a2a1c;
+  --marigold: #e6a23a;
+  --marigold-deep: #c2812b;
+  --teal: #176974;
+  --teal-deep: #0e4a52;
+  --indigo: #1f2a6e;
+  --gold: #c2932f;
+  --blush: #d96a5a;
+  --olive: #6b6b2f;
+}
+
+/* Reset App container — must NOT center text per guidelines */
+.App { text-align: left; }
+
+html { scroll-behavior: smooth; }
+
+body.vintage-body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: 'Lora', Georgia, serif;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(230, 162, 58, 0.10), transparent 40%),
+    radial-gradient(circle at 90% 30%, rgba(181, 58, 38, 0.08), transparent 40%),
+    radial-gradient(circle at 40% 90%, rgba(23, 105, 116, 0.08), transparent 50%);
+}
+
+/* Paper grain overlay (subtle) — applied via .grain-layer pseudo */
+.grain-layer {
+  position: relative;
+}
+.grain-layer::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.11  0 0 0 0 0.07  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Typography helpers */
+.font-poster { font-family: 'Yatra One', 'Playfair Display', serif; letter-spacing: 0.01em; }
+.font-display { font-family: 'Playfair Display', Georgia, serif; }
+.font-stamp { font-family: 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.12em; }
+.font-serif-body { font-family: 'Lora', Georgia, serif; }
+.font-cormorant { font-family: 'Cormorant Garamond', 'Playfair Display', serif; }
+.font-dmserif { font-family: 'DM Serif Display', 'Playfair Display', serif; }
+
+/* Color utility classes */
+.text-ink { color: var(--ink); }
+.text-ink-soft { color: var(--ink-soft); }
+.text-terracotta { color: var(--terracotta); }
+.text-marigold { color: var(--marigold-deep); }
+.text-teal { color: var(--teal); }
+.text-indigo { color: var(--indigo); }
+.text-cream { color: var(--cream); }
+.bg-cream { background-color: var(--cream); }
+.bg-paper { background-color: var(--paper); }
+.bg-paper-dark { background-color: var(--paper-dark); }
+.bg-ink { background-color: var(--ink); }
+.bg-terracotta { background-color: var(--terracotta); }
+.bg-marigold { background-color: var(--marigold); }
+.bg-teal { background-color: var(--teal); }
+.bg-indigo { background-color: var(--indigo); }
+.bg-gold { background-color: var(--gold); }
+.border-ink { border-color: var(--ink); }
+.border-terracotta { border-color: var(--terracotta); }
+.border-marigold { border-color: var(--marigold-deep); }
+.border-teal { border-color: var(--teal); }
+
+/* Decorative frames */
+.double-rule {
+  border-top: 3px double var(--ink);
+  border-bottom: 3px double var(--ink);
+}
+.thin-rule { border-top: 1px solid var(--ink); }
+
+/* Polaroid / taped photo */
+.polaroid {
+  background: #fbf3df;
+  padding: 14px 14px 56px 14px;
+  box-shadow: 0 18px 30px -10px rgba(42,29,18,0.35), 0 4px 10px rgba(42,29,18,0.18);
+  border: 1px solid rgba(42,29,18,0.15);
+  position: relative;
+}
+.polaroid img { display: block; width: 100%; height: auto; filter: contrast(1.05) saturate(1.05) sepia(0.18); }
+.tape {
+  position: absolute;
+  width: 110px;
+  height: 28px;
+  background: rgba(230, 162, 58, 0.55);
+  border: 1px solid rgba(180, 130, 30, 0.4);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+  transform: rotate(-6deg);
+}
+
+/* Stamp */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.18em;
+  border: 2px solid currentColor;
+  padding: 4px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.0);
+}
+.stamp-circle {
+  border-radius: 9999px;
+  border: 2px dashed currentColor;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.2em;
+}
+.postage {
+  position: relative;
+  background: var(--paper);
+  padding: 10px;
+  border: 1px solid rgba(42,29,18,0.2);
+}
+.postage::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  background:
+    radial-gradient(circle at 6px 0, transparent 5px, var(--cream) 6px) 0 0/12px 12px repeat-x,
+    radial-gradient(circle at 6px 12px, transparent 5px, var(--cream) 6px) 0 100%/12px 12px repeat-x,
+    radial-gradient(circle at 0 6px, transparent 5px, var(--cream) 6px) 0 0/12px 12px repeat-y,
+    radial-gradient(circle at 12px 6px, transparent 5px, var(--cream) 6px) 100% 0/12px 12px repeat-y;
+  z-index: -1;
+}
+
+/* Marquee ticker */
+.ticker-track {
+  display: inline-flex;
+  gap: 48px;
+  white-space: nowrap;
+  animation: ticker-scroll 38s linear infinite;
+  padding-left: 48px;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* Poster card */
+.poster-card {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.poster-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.poster-card .corner-stamp {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  transform: rotate(8deg);
+  background: var(--marigold);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  padding: 6px 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  z-index: 2;
+}
+
+/* Skill chip */
+.skill-chip {
+  border: 1.5px solid var(--ink);
+  padding: 8px 16px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.14em;
+  background: var(--paper);
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.skill-chip:hover { background: var(--ink); color: var(--cream); transform: translateY(-2px); }
+.skill-chip.active { background: var(--terracotta); color: var(--cream); border-color: var(--terracotta); }
+
+/* Decorative ornament rule */
+.ornament {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+}
+.ornament::before, .ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--ink-soft) 30%, var(--ink-soft) 70%, transparent);
+}
+
+/* Newspaper columns drop cap */
+.dropcap::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  float: left;
+  font-size: 4.4rem;
+  line-height: 0.9;
+  padding: 6px 10px 0 0;
+  color: var(--terracotta);
+}
+
+/* Hero photo collage rotation */
+.tilt-l { transform: rotate(-3deg); }
+.tilt-r { transform: rotate(3deg); }
+.tilt-r-sm { transform: rotate(1.5deg); }
+.tilt-l-sm { transform: rotate(-1.5deg); }
+
+/* Buttons */
+.btn-vintage {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.18em;
+  border: 2px solid var(--ink);
+  text-transform: uppercase;
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+  cursor: pointer;
+}
+.btn-vintage:hover { background: var(--terracotta); border-color: var(--terracotta); transform: translateY(-2px); }
+.btn-vintage-outline {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-vintage-outline:hover { background: var(--ink); color: var(--cream); }
+
+/* Scalloped circular border (sun) */
+.sun-stamp {
+  position: relative;
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: var(--marigold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.16em;
+  text-align: center;
+  line-height: 0.95;
+  border: 2px solid var(--ink);
+}
+.sun-stamp::before {
+  content: ""; position: absolute; inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 47%, var(--marigold) 48%, var(--marigold) 50%, transparent 51%);
+  -webkit-mask: radial-gradient(circle at center, black 60%, transparent 60%);
+  mask: radial-gradient(circle at center, black 60%, transparent 60%);
+  z-index: -1;
+}
+
+/* Spinning circular text container */
+@keyframes slow-spin { to { transform: rotate(360deg); } }
+.slow-spin { animation: slow-spin 22s linear infinite; }
+
+/* Subtle entrance fade */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 700ms ease both; }
+
+/* Removable App-header default */
+.App-header { background: transparent !important; min-height: auto !important; color: inherit !important; }
+.App-link { color: inherit !important; }
+
+/* Section padding helper */
+.section-pad { padding-top: 96px; padding-bottom: 96px; }
+
+/* Selection */
+::selection { background: var(--marigold); color: var(--ink); }
